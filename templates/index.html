@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBER SMASH ARENA - Online Multiplayer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="stars-bg"></div>
+
+  <header class="header">
+    <h1 class="glitch-title">CYBER SMASH ARENA</h1>
+    <p class="tagline">Servidor Online Oficial alojado en PythonAnywhere</p>
+  </header>
+
+  <main class="container">
+    <div class="lobby-card">
+      <div class="tabs">
+        <button id="tab-play" class="tab-btn active">Jugar en el Navegador</button>
+        <button id="tab-desktop" class="tab-btn">Conectar desde Pygame (PC)</button>
+        <button id="tab-status" class="tab-btn">Estado del Servidor</button>
+      </div>
+
+      <!-- PANEL 1: JUEGO EN NAVEGADOR -->
+      <section id="panel-play" class="tab-content active">
+        <div class="room-bar">
+          <button id="btn-create" class="btn primary">Crear Sala</button>
+          <div class="join-group">
+            <input type="text" id="input-room" placeholder="CÓDIGO (ej: CYBER-4892)" maxlength="12">
+            <button id="btn-join" class="btn secondary">Unirse</button>
+          </div>
+          <span id="room-display" class="room-tag">Modo: Local / Esperando</span>
+        </div>
+
+        <div class="char-picker">
+          <div class="char-btn active" data-char="NEXUS">
+            <div class="avatar c-nexus"></div>
+            <span>NEXUS</span>
+          </div>
+          <div class="char-btn" data-char="VALKYRIE">
+            <div class="avatar c-valkyrie"></div>
+            <span>VALKYRIE</span>
+          </div>
+          <div class="char-btn" data-char="GOLIATH">
+            <div class="avatar c-goliath"></div>
+            <span>GOLIATH</span>
+          </div>
+          <div class="char-btn" data-char="PHANTOM">
+            <div class="avatar c-phantom"></div>
+            <span>PHANTOM</span>
+          </div>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas id="gameCanvas" width="960" height="540"></canvas>
+          <div id="game-overlay" class="overlay">
+            <h2 id="overlay-title">CYBER SMASH ARENA</h2>
+            <p id="overlay-sub">Presiona INICIAR para jugar vs CPU o conéctate con un amigo</p>
+            <button id="btn-start-game" class="btn primary huge">INICIAR PARTIDA</button>
+          </div>
+        </div>
+
+        <div class="controls-guide">
+          <p><strong>Controles:</strong> A/D = Moverse | W/Espacio = Salto | J = Ataque Ligero | K = Smash Fuerte | U/I = Especial | L/Shift = Escudo/Tech</p>
+        </div>
+      </section>
+
+      <!-- PANEL 2: CLIENTE DE ESCRITORIO (PYGAME) -->
+      <section id="panel-desktop" class="tab-content">
+        <div class="info-box">
+          <h3>¿Cómo jugar online con el juego de Python (Pygame)?</h3>
+          <ol>
+            <li>Abre tu juego en tu computadora ejecutando:
+              <code>python gemini-code-1791990527364.py</code>
+            </li>
+            <li>En el menú principal, haz clic en <strong>MULTIJUGADOR ONLINE</strong>.</li>
+            <li>Ingresa la URL de este servidor:
+              <code id="server-url-display">https://TU_USUARIO.pythonanywhere.com</code>
+            </li>
+            <li>Haz clic en <strong>CREAR SALA</strong> para obtener un código, o introduce el código de tu amigo para <strong>UNIRTE</strong>.</li>
+            <li>¡Ambos jugadores elegirán personaje y jugarán a 60 FPS con sincronización en tiempo real a través de este servidor!</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- PANEL 3: ESTADO DEL SERVIDOR -->
+      <section id="panel-status" class="tab-content">
+        <div class="status-grid">
+          <div class="stat-card">
+            <h4>Estado</h4>
+            <span id="stat-online" class="status-pill green">ONLINE</span>
+          </div>
+          <div class="stat-card">
+            <h4>Salas Activas</h4>
+            <span id="stat-rooms" class="stat-val">0</span>
+          </div>
+          <div class="stat-card">
+            <h4>Latencia API</h4>
+            <span id="stat-ping" class="stat-val">-- ms</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/static/game.js"></script>
+</body>
+</html>
